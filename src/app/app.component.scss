@@ -1,0 +1,113 @@
+.btn {
+  display: inline-block;
+  background: #333333;
+  color: #fff;
+  padding: 0.4rem 1.3rem;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  margin-right: 0.5rem;
+  transition: opacity 0.2s ease-in;
+  outline: none;
+
+  &:disabled {
+    background: #ccc;
+    color: #000;
+    cursor: not-allowed;
+  }
+};
+
+h1 {
+  text-align: center;
+}
+
+.form-group {
+  display: flex;
+  margin-top: 0.3rem;
+  margin-bottom: .5rem;
+  flex-direction: column;
+  align-items: center;
+  width: 500px;
+  //
+  //input,select {
+  //  height: 15px;
+  //  margin-top: 10px;
+  //  &.ng-invalid.ng-touched {
+  //    border: 1px solid red;
+  //  }
+  //  &.ng-valid.ng-touched {
+  //    border: 1px solid green;
+  //  }
+  //}
+  .mat-form-field {
+    margin-bottom: 20px;
+  }
+
+  .validation {
+    color: red;
+    margin-top: 5px;
+  }
+};
+
+.card {
+  padding: 1rem;
+  border: #ccc 1px dotted;
+  margin: 0.7rem 0;
+
+  p {
+    display: flex;
+    justify-content: space-between;
+  }
+};
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.button-block {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  margin-bottom: 10px;
+}
+
+hr {
+  width: 100%;
+}
+
+.hobby-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  .hobby-name, .hobby-duration {
+    width: 30%;
+  }
+}
+
+.add-hobby-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  .mat-form-field {
+    width: 30%;
+    height: 60px;
+  }
+}
+.mat-form-field {
+  width: 100%;
+  height: 60px;
+}
+.form-button {
+  width: 100px;
+  height: 40px;
+}
+.button-block {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  .form-button {
+    width: 30%;
+  }
+}

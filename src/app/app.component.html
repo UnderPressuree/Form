@@ -1,0 +1,65 @@
+<div class="container">
+  <h1>Front-End Developer Form Card</h1>
+    <div class="card">
+        <form class="form-group" [formGroup]="form" (ngSubmit)="sendForm()">
+          <mat-form-field appearance="fill">
+            <input matInput placeholder="Name" [formControl]="firstName">
+            <mat-error *ngIf="firstName.getError('required')">Введите имя</mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <input matInput placeholder="Surname" [formControl]="lastName">
+            <mat-error *ngIf="lastName.getError('required')">Введите фамилию</mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <input matInput [matDatepicker]="myDatePicker" placeholder="Date of Birth" [formControl]="dateOfBirth">
+            <mat-datepicker-toggle [for]="myDatePicker" matSuffix></mat-datepicker-toggle>
+            <mat-datepicker #myDatePicker></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Framework</mat-label>
+            <mat-select [formControl]="framework">
+              <mat-option *ngFor="let f of frameworks" [value]="f.name">{{f.name}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="framework.getError('required')">Выберите фреймворк</mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Version</mat-label>
+            <mat-select [formControl]="frameworkVersion" [disabled]="!chosenFramework">
+              <mat-option *ngFor="let v of chosenFramework?.versions" [value]="v">{{v}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="frameworkVersion.getError('required')">Выберите версию</mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <input matInput placeholder="Email" [formControl]="email">
+            <mat-error *ngIf="email.getError('required')">Введите Email</mat-error>
+            <mat-error *ngIf="email.getError('email')">Не корректный Email</mat-error>
+            <mat-error *ngIf="email.getError('emailUsed')">{{email.value}} уже существует</mat-error>
+          </mat-form-field>
+          <ng-container *ngIf="hobbyControls.length;">
+            <div class="hobby-container" *ngFor="let h of hobbyControls; let i = index">
+              <span class="hobby-name">{{h.get('name').value}}</span>
+              <span class="hobby-duration">{{h.get('duration').value}}</span>
+              <mat-icon (click)="removeHobby(i)">clear</mat-icon>
+            </div>
+          </ng-container>
+          <form class="add-hobby-container" [formGroup]="hobbyForm" (ngSubmit)="addHobby()">
+            <mat-form-field appearance="fill">
+              <input matInput placeholder="Hobby" [formControl]="hobbyName">
+              <mat-error *ngIf="hobbyName.getError('required')">Введите хобби</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <input matInput placeholder="Duration" [formControl]="duration">
+              <mat-error *ngIf="duration.getError('required')">Введите продолжительность</mat-error>
+            </mat-form-field>
+            <button class="form-button" mat-raised-button color="primary" (click)="addHobby()" [disabled]="hobbyForm.invalid">Add hobby</button>
+            <div class="error" *ngIf="form.getError('noHobby')">Введите хотя бы одно хобби</div>
+          </form>
+          <hr>
+          <div class="button-block">
+            <button class="form-button" mat-raised-button color="primary" (click)="sendForm()" [disabled]="form.invalid">Send</button>
+            <button class="form-button" mat-raised-button color="warn" type="reset">Reset</button>
+          </div>
+    </form>
+  </div>
+</div>
+
